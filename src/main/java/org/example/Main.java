@@ -16,7 +16,7 @@ import org.example.arraytask.parser.IntegerArrayParser;
 import org.example.arraytask.parser.impl.IntegerArrayParserImpl;
 import org.example.arraytask.reader.ArrayReader;
 import org.example.arraytask.reader.impl.ArrayReaderImpl;
-import org.example.arraytask.repository.ArrayRepository;
+import org.example.arraytask.repository.AbstractArrayRepository;
 import org.example.arraytask.repository.impl.*;
 import org.example.arraytask.service.impl.ArrayMathServiceImpl;
 import org.example.arraytask.validator.ArrayValidator;
@@ -36,7 +36,7 @@ public class Main {
             ArrayValidator validator = new ArrayValidatorImpl();
             IntegerArrayParser parser = new IntegerArrayParserImpl(validator);
 
-            ArrayRepository repository = ArrayRepositoryImpl.getInstance();
+            AbstractArrayRepository repository = ArrayRepository.getInstance();
             IntegerArrayWrapperFactory arrayFactory = new IntegerArrayWrapperFactoryImpl();
             ArrayObserver observer = new ArrayObserverImpl();
             WareHouse wareHouse = WareHouse.getInstance();

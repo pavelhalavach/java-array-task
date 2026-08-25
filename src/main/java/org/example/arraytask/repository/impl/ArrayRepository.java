@@ -1,32 +1,28 @@
 package org.example.arraytask.repository.impl;
 
 import org.example.arraytask.entity.IntegerArrayWrapper;
-import org.example.arraytask.exception.CustomException;
-import org.example.arraytask.repository.ArrayRepository;
+import org.example.arraytask.repository.AbstractArrayRepository;
 import org.example.arraytask.repository.ArraySpecification;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
 
-public class ArrayRepositoryImpl extends ArrayRepository {
+public class ArrayRepository extends AbstractArrayRepository {
 
-    private static ArrayRepositoryImpl instance;
+    private static ArrayRepository instance;
 
-    private ArrayRepositoryImpl() {
+    private ArrayRepository() {
         super(new ArrayList<>());
     }
 
-    public static ArrayRepositoryImpl getInstance() {
+    public static ArrayRepository getInstance() {
         if (instance == null) {
-            instance = new ArrayRepositoryImpl();
+            instance = new ArrayRepository();
         }
         return instance;
     }
 
-    public List<IntegerArrayWrapper> query(ArraySpecification arraySpecification) throws CustomException {
+    public List<IntegerArrayWrapper> query(ArraySpecification arraySpecification) {
         List<IntegerArrayWrapper> result = new ArrayList<>();
 
         for (IntegerArrayWrapper wrapper : getIntegerArrayWrapperList()) {

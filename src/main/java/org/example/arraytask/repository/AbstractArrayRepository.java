@@ -1,17 +1,16 @@
 package org.example.arraytask.repository;
 
 import org.example.arraytask.entity.IntegerArrayWrapper;
-import org.example.arraytask.exception.CustomException;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.List;
 
-public abstract class ArrayRepository {
+public abstract class AbstractArrayRepository {
     private List<IntegerArrayWrapper> integerArrayWrapperList;
 
-    protected ArrayRepository(List<IntegerArrayWrapper> integerArrayWrapperList) {
+    protected AbstractArrayRepository(List<IntegerArrayWrapper> integerArrayWrapperList) {
         this.integerArrayWrapperList = integerArrayWrapperList;
     }
 
@@ -49,5 +48,5 @@ public abstract class ArrayRepository {
 
     protected void postSortLogic() {}
 
-    public abstract List<IntegerArrayWrapper> query(ArraySpecification arraySpecification) throws CustomException;
+    public abstract List<IntegerArrayWrapper> query(ArraySpecification arraySpecification);
 }

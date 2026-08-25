@@ -5,16 +5,16 @@ import org.example.arraytask.entity.IntegerArrayWrapper;
 import org.example.arraytask.exception.CustomException;
 import org.example.arraytask.factory.IntegerArrayWrapperFactory;
 import org.example.arraytask.observer.ArrayObserver;
-import org.example.arraytask.repository.ArrayRepository;
+import org.example.arraytask.repository.AbstractArrayRepository;
 
 public class IntegerArrayWrapperCreatorImpl implements IntegerArrayWrapperCreator {
     private final IntegerArrayWrapperFactory wrapperFactory;
-    private final ArrayRepository arrayRepository;
+    private final AbstractArrayRepository abstractArrayRepository;
     private final ArrayObserver arrayObserver;
 
-    public IntegerArrayWrapperCreatorImpl(IntegerArrayWrapperFactory wrapperFactory, ArrayRepository arrayRepository, ArrayObserver arrayObserver) {
+    public IntegerArrayWrapperCreatorImpl(IntegerArrayWrapperFactory wrapperFactory, AbstractArrayRepository abstractArrayRepository, ArrayObserver arrayObserver) {
         this.wrapperFactory = wrapperFactory;
-        this.arrayRepository = arrayRepository;
+        this.abstractArrayRepository = abstractArrayRepository;
         this.arrayObserver = arrayObserver;
     }
 
@@ -23,7 +23,7 @@ public class IntegerArrayWrapperCreatorImpl implements IntegerArrayWrapperCreato
         IntegerArrayWrapper wrapper = wrapperFactory.create(array);
 
         wrapper.attachObserver(arrayObserver);
-        arrayRepository.add(wrapper);
+        abstractArrayRepository.add(wrapper);
         wrapper.notifyObservers();
 
         return wrapper;
