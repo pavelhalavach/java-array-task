@@ -4,7 +4,6 @@ import org.example.arraytask.entity.IntegerArrayWrapper;
 import org.example.arraytask.exception.CustomException;
 import org.example.arraytask.service.ArrayMathService;
 
-import java.util.Arrays;
 import java.util.OptionalDouble;
 import java.util.OptionalInt;
 import java.util.OptionalLong;

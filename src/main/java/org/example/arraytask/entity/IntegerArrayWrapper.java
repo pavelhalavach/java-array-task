@@ -47,10 +47,7 @@ public class IntegerArrayWrapper implements Observable {
     }
 
     @Override
-    public void attachObserver(ArrayObserver observer) throws CustomException {
-        if (observer == null) {
-            throw new CustomException("Cannot attach observer: provided argument is null.");
-        }
+    public void attachObserver(ArrayObserver observer) {
         this.observer = observer;
     }
 
@@ -60,11 +57,10 @@ public class IntegerArrayWrapper implements Observable {
     }
 
     @Override
-    public void notifyObservers() throws CustomException {
-        if (observer == null) {
-            throw new CustomException("Notification failed: no observer is currently attached to this wrapper.");
+    public void notifyObservers() {
+        if (observer != null) {
+            observer.actionPerformed(this);
         }
-        observer.actionPerformed(this);
     }
 
     @Override

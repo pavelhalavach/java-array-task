@@ -2,7 +2,7 @@ package org.example.arraytask.repository.impl;
 
 import org.example.arraytask.entity.IntegerArrayWrapper;
 import org.example.arraytask.repository.AbstractArrayRepository;
-import org.example.arraytask.repository.ArraySpecification;
+import org.example.arraytask.repository.specification.ArraySpecification;
 
 import java.util.ArrayList;
 import java.util.List;

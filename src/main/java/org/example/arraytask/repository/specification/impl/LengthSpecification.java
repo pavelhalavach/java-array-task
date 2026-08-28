@@ -1,7 +1,7 @@
-package org.example.arraytask.repository.impl;
+package org.example.arraytask.repository.specification.impl;
 
 import org.example.arraytask.entity.IntegerArrayWrapper;
-import org.example.arraytask.repository.ArraySpecification;
+import org.example.arraytask.repository.specification.ArraySpecification;
 
 public class LengthSpecification implements ArraySpecification {
 

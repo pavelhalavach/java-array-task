@@ -1,4 +1,4 @@
-package org.example.arraytask.repository.impl;
+package org.example.arraytask.repository.specification.impl;
 
 public enum ComparisonOperator {
     GREATER,

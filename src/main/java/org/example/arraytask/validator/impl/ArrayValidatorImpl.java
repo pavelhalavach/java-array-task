@@ -11,15 +11,14 @@ import java.util.regex.Pattern;
 public class ArrayValidatorImpl implements ArrayValidator {
 
     private static final Logger logger = LogManager.getLogger();
-    private static final Pattern NUMERIC_LIST_VALIDATOR_PATTERN = Pattern.compile("(\\d+[,;]?\\s*)+");
-
+    private static final Pattern NUMERIC_LIST_VALIDATOR_PATTERN = Pattern.compile("\\s*\\d+(\\s*[;,]\\s*\\d+)*\\s*");
     @Override
     public boolean isLineValid(String line) {
         logger.log(Level.DEBUG,"Validating line \"{}\"", line);
-        if (line == null || line.isBlank()) {
+        if (line == null) {
             return false;
         }
-        Matcher matcher = NUMERIC_LIST_VALIDATOR_PATTERN.matcher(line);
+        Matcher matcher = NUMERIC_LIST_VALIDATOR_PATTERN.matcher(line.strip());
         return matcher.matches();
     }
 }

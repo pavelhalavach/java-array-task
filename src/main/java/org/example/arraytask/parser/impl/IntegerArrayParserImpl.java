@@ -20,6 +20,9 @@ public class IntegerArrayParserImpl implements IntegerArrayParser {
             throw new CustomException("Provided line is null.");
         }
         String strippedLine = line.strip();
+        if (strippedLine.isEmpty()) {
+            return new int[0];
+        }
         String[] elements = strippedLine.split("\\s*[,; ]\\s*");
         try {
             return Arrays.stream(elements)

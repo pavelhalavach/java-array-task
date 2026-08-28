@@ -1,11 +1,11 @@
-package org.example.arraytask.repository.impl;
+package org.example.arraytask.repository.specification.impl;
 
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.example.arraytask.entity.IntegerArrayWrapper;
 import org.example.arraytask.exception.CustomException;
-import org.example.arraytask.repository.ArraySpecification;
+import org.example.arraytask.repository.specification.ArraySpecification;
 import org.example.arraytask.service.ArrayMathService;
 
 import java.util.OptionalLong;

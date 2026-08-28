@@ -1,4 +1,4 @@
-package org.example.arraytask.repository;
+package org.example.arraytask.repository.specification;
 
 import org.example.arraytask.entity.IntegerArrayWrapper;
 

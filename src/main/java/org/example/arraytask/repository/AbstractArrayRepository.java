@@ -1,6 +1,7 @@
 package org.example.arraytask.repository;
 
 import org.example.arraytask.entity.IntegerArrayWrapper;
+import org.example.arraytask.repository.specification.ArraySpecification;
 
 import java.util.ArrayList;
 import java.util.Collection;
