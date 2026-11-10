@@ -13,14 +13,30 @@ import java.util.OptionalLong;
 public class SumSpecification implements ArraySpecification {
 
     private final long expectedSum;
+    private final long upperSum;
     private final ComparisonOperator operator;
     private final ArrayMathService mathService;
     private static final Logger logger = LogManager.getLogger();
 
 
-    public SumSpecification(long expectedSum, ComparisonOperator operator, ArrayMathService mathService) {
+    public SumSpecification(long expectedSum, ComparisonOperator operator, ArrayMathService mathService) throws CustomException {
+        if (operator == ComparisonOperator.BETWEEN) {
+            throw new CustomException(
+                    "BETWEEN requires two bounds, use SumSpecification(long, long, ArrayMathService)");
+        }
         this.expectedSum = expectedSum;
+        this.upperSum = expectedSum;
         this.operator = operator;
+        this.mathService = mathService;
+    }
+
+    public SumSpecification(long minSum, long maxSum, ArrayMathService mathService) {
+        if (minSum > maxSum) {
+            throw new IllegalArgumentException("minSum must not be greater than maxSum: " + minSum + " > " + maxSum);
+        }
+        this.expectedSum = minSum;
+        this.upperSum = maxSum;
+        this.operator = ComparisonOperator.BETWEEN;
         this.mathService = mathService;
     }
 
@@ -33,6 +49,7 @@ public class SumSpecification implements ArraySpecification {
                 case GREATER -> optionalSum.getAsLong() > expectedSum;
                 case LESS -> optionalSum.getAsLong() < expectedSum;
                 case EQUAL -> optionalSum.getAsLong() == expectedSum;
+                case BETWEEN -> optionalSum.getAsLong() >= expectedSum && optionalSum.getAsLong() <= upperSum;
             };
         } catch (CustomException e) {
             logger.log(Level.WARN, "Array with ID {} caused an exception during specification check. Treating as unsafe/invalid.", array.getId(), e);
